@@ -1,37 +1,47 @@
-import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { useAuthSelector, useLogout } from "../../auth";
 import * as S from "./style";
-import { arrPlailist } from "../../utils/arrPlaylist";
-import { SkeletonSideBar } from "../Tracks/style";
-import { UserContext } from "../Context";
 
-export function SideBar({ isLoading, loadingTracksError }) {
-  const categoryPlayList = arrPlailist.map((category) => (
-    <S.SideBarItem key={category.id}>
-      {isLoading && !loadingTracksError ? (
-        <S.SideBarLink to={`/category/${category.id}`}>
-          <S.SideBarImg src={category.img} alt={category.alt} />
-        </S.SideBarLink>
-      ) : (
-        <SkeletonSideBar> </SkeletonSideBar>
-      )}
-    </S.SideBarItem>
-  ));
-
-  const { user, handleLogout } = useContext(UserContext);
-
+export default function SideBar({ showCategory }) {
+  const logout = useLogout();
+  const auth = useAuthSelector();
   return (
-    <S.MainSideBar>
-      <S.SideBarPersonal>
-        <S.SideBarPersonalName>{user}</S.SideBarPersonalName>
-        <S.SideBarIcon onClick={handleLogout}>
-          <svg alt="logout">
-            <use xlinkHref="img/icon/sprite.svg#logout" />
-          </svg>
-        </S.SideBarIcon>
-      </S.SideBarPersonal>
-      <S.SideBarBlock>
-        <S.SideBarList>{categoryPlayList}</S.SideBarList>
-      </S.SideBarBlock>
-    </S.MainSideBar>
+    <S.MainSidebar>
+      <S.SidebarPersonal>
+        <S.SidebarName>{auth.username ?? auth.email}</S.SidebarName>
+        <S.SidebarIcon onClick={logout}>
+          <img src="img/logout.png" alt="logout" />
+        </S.SidebarIcon>
+      </S.SidebarPersonal>
+      {showCategory ? (
+        <S.SidebarBlock>
+          <S.SidebarList>
+            <>
+              <S.SidebarItem>
+                <Link className="sidebar__link" to="/category/1">
+                  <S.SidebarImage
+                    src="img/playlist01.png"
+                    alt="classic_music"
+                  />
+                </Link>
+              </S.SidebarItem>
+              <S.SidebarItem>
+                <Link to="/category/2">
+                  <S.SidebarImage
+                    src="img/playlist02.png"
+                    alt="electro_music"
+                  />
+                </Link>
+              </S.SidebarItem>
+              <S.SidebarItem>
+                <Link className="sidebar__link" to="/category/3">
+                  <S.SidebarImage src="img/playlist03.png" alt="rock_music" />
+                </Link>
+              </S.SidebarItem>
+            </>
+          </S.SidebarList>
+        </S.SidebarBlock>
+      ) : null}
+    </S.MainSidebar>
   );
 }
