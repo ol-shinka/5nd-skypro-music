@@ -16,3 +16,13 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   if (result?.error?.status !== 401) {
     return result;
   }
+//перебрасывает на авторизацию
+const forceLogout = () => {
+  api.dispatch(setAuthUser(null));
+  window.location.navigate("/login");
+};
+const { auth } = api.getState();
+if (!auth.refresh) {
+  return forceLogout();
+}
+}
