@@ -13,6 +13,24 @@ export const userActions = createApi({
       query: () => "/catalog/track/all/",
       providesTags: () => [TRACKS_MARKER],
     }),
+    getMyPlaylist: builder.query({
+      query: () => ({
+        url: "/catalog/track/favorite/all/",
+      }),
+      transformResponse: (response, arg) => {
+        return response.map((item) => ({
+          ...item,
+          stared_user: [
+            {
+              id: arg.auth.id,
+              username: arg.auth.username,
+              first_name: arg.auth.first_name,
+              last_name: arg.auth.last_name,
+              email: arg.auth.email,
+            },
+          ],
+        }));
+      },
 })
 
 
