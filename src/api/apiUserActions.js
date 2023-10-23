@@ -8,5 +8,12 @@ export const userActions = createApi({
   reducerPath: "userActions",
   baseQuery: baseQueryWithReauth,
 
-  
+  endpoints: (builder) => ({
+    getMainPlaylist: builder.query({
+      query: () => "/catalog/track/all/",
+      providesTags: () => [TRACKS_MARKER],
+    }),
+})
+
+
 })
