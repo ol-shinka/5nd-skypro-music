@@ -13,3 +13,4 @@ export function NotFound404() {
     </S.Wrapper>
   );
 }
+export default NotFound404;

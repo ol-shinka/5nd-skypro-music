@@ -1,23 +1,24 @@
 import { useParams } from "react-router-dom";
-import * as S from "../main/style";
-import { arrPlailist } from "../../utils/arrPlaylist";
+import Tracklist from "../../components/TrackList/TrackList";
+import { useGetCategoryQuery } from "../../api/apiUserActions";
 
-export function Category() {
+export default function CategoryPage() {
   const params = useParams();
 
-  const category = arrPlailist.find(
-    (element) => element.id === Number(params.id),
-  );
+  const { data, error, isLoading } = useGetCategoryQuery({
+    id: params.id,
+  });
+
+  const tracks = data?.items || [];
+  const name = data?.name || "";
 
   return (
-    <S.Wrapper>
-      <S.Container>
-        <S.Main>
-          <h1>CategoryPage {category.id}</h1>
-          <img src={category.img} alt={category.alt} />
-        </S.Main>
-        <footer className="footer" />
-      </S.Container>
-    </S.Wrapper>
+    <Tracklist
+      tracks={tracks}
+      error={error}
+      loading={isLoading}
+      showSearchBar={false}
+      title={name}
+    />
   );
 }
