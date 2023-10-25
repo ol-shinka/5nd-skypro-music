@@ -67,3 +67,11 @@ export const userActions = createApi({
     }),
   }),
 });
+
+export const {
+  useGetMainPlaylistQuery,
+  useGetMyPlaylistQuery,
+  useLikeTrackMutation,
+  useDislikeTrackMutation,
+  useGetCategoryQuery,
+} = userActions;

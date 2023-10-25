@@ -25,6 +25,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   if (!auth.refresh) {
     return forceLogout();
   }
+
   const refreshToken = await baseQuery(
     {
       url: "/user/token/refresh/",
