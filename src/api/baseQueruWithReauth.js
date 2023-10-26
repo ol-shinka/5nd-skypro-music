@@ -51,4 +51,5 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   }
   return retryResult;
 };
+
 export default baseQueryWithReauth;
