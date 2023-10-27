@@ -6,7 +6,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import AuthPage from "../../pages/AuthPage/AuthPage";
 import SamplePage from "../SamplePage/SamplePage";
 import AppWallpaper from "../AppWallpaper/AppWallpaper";
-import NotFound404 from "../../pages/not-Found";
+import NotFound404 from "../../pages/not-found";
 
 export default function AppRoutes({ isLoggedIn, setIsLoggedIn }) {
   return (
