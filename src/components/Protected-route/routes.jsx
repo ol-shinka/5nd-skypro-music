@@ -4,7 +4,7 @@ import { NotFound404 } from "../../pages/not-found/index";
 import { Collections } from "../../pages/collections";
 import { Category } from "../../pages/category";
 import { AuthPage } from "../../pages/AuthPage/AuthPage";
-import { ProtectedRoute } from "./index";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 export function AppRoutes({ setUser, user }) {
   return (
