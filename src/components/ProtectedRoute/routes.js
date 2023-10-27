@@ -2,11 +2,11 @@ import { Route, Routes } from "react-router-dom";
 import MainPage from "../../pages/main/index";
 import CollectionsPage from "../../pages/collections/index";
 import CategoryPage from "../../pages/category/index";
-import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRoute from "./index";
 import AuthPage from "../../pages/AuthPage/AuthPage";
 import SamplePage from "../SamplePage/SamplePage";
 import AppWallpaper from "../AppWallpaper/AppWallpaper";
-import NotFound404 from "../../pages/not-Found";
+import NotFound404 from "../../pages/not-found/not-found";
 
 export default function AppRoutes({ isLoggedIn, setIsLoggedIn }) {
   return (

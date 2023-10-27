@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuthSelector, useLogout } from "../../auth";
 import * as S from "./style";
 
-export default function SideBar({ showCategory }) {
+export function SideBar({ showCategory }) {
   const logout = useLogout();
   const auth = useAuthSelector();
   return (
@@ -45,3 +45,4 @@ export default function SideBar({ showCategory }) {
     </S.MainSidebar>
   );
 }
+export default SideBar;
