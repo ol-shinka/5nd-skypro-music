@@ -16,20 +16,6 @@ export const userActions = createApi({
       query: () => ({
         url: "/catalog/track/favorite/all/",
       }),
-      transformResponse: (response, arg) => {
-        return response.map((item) => ({
-          ...item,
-          stared_user: [
-            {
-              id: arg.auth.id,
-              username: arg.auth.username,
-              first_name: arg.auth.first_name,
-              last_name: arg.auth.last_name,
-              email: arg.auth.email,
-            },
-          ],
-        }));
-      },
       providesTags: () => [TRACKS_MARKER],
     }),
     getCategory: builder.query({
