@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import MainPage from "../../pages/main/index";
 import CollectionsPage from "../../pages/collections/index";
 import CategoryPage from "../../pages/category/index";
-import ProtectedRoute from "./Protected-Route";
+import ProtectedRoute from "./ProtectedRoute";
 import AuthPage from "../../pages/AuthPage/AuthPage";
 import SamplePage from "../SamplePage/SamplePage";
 import AppWallpaper from "../AppWallpaper/AppWallpaper";
