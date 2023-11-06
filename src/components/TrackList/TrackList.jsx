@@ -10,7 +10,7 @@ import * as S from "./style";
 const TrackList = () => {
   return (
     <S.ContentTitle>
-      <S.PlaylistTitleCol style={{ width: "447px" }}>Трек</S.PlaylistTitleCol>
+      <S.PlaylistTitleCol style={{ width: "447px" }}>ТРЕК</S.PlaylistTitleCol>
       <S.PlaylistTitleCol style={{ width: "321px" }}>
         ИСПОЛНИТЕЛЬ
       </S.PlaylistTitleCol>
