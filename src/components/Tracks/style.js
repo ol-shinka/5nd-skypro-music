@@ -1,46 +1,23 @@
-import styled, { keyframes, css } from "styled-components";
-import { Link } from "react-router-dom";
+import { styled, keyframes } from "styled-components";
 
-export const blink = keyframes`
-  from {
-    opacity: 1;
+export const blink = keyframes`{
+  from{  0% {
+    background-color: #313131;
   }
-
-  to {
-    opacity: 0.2;
+  50% {
+    background-color: #515151;
   }
-
+  100% {
+    background-color: #313131;
+  }
+}}
 `;
 
-export const Skeleton = styled.div`
-  animation: ${blink} 2s infinite alternate;
-  background-color: #4e4e4e;
-  height: 20px;
-  width: 300px;
-`;
-export const SkeletonAlbum = styled(Skeleton)`
-  width: 100px;
-`;
-export const SkeletonSideBar = styled(Skeleton)`
-  width: 250px;
-  height: 150px;
-`;
-export const SkeletonPlayBar = styled(Skeleton)`
-  width: 50px;
-`;
-
-export const ContentPlaylist = styled.ul`
-  display: flex;
-  flex-direction: column;
-  background-color: #181818;
-`;
-
-export const PlaylistItem = styled.li`
+export const PlaylistItem = styled.div`
   width: 100%;
   display: block;
   margin-bottom: 12px;
 `;
-
 export const PlaylistTrack = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
@@ -56,7 +33,6 @@ export const PlaylistTrack = styled.div`
   -ms-flex-align: center;
   align-items: center;
 `;
-
 export const TrackTitle = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
@@ -70,7 +46,6 @@ export const TrackTitle = styled.div`
   align-items: center;
   width: 447px;
 `;
-
 export const TrackTitleImage = styled.div`
   width: 51px;
   height: 51px;
@@ -87,7 +62,6 @@ export const TrackTitleImage = styled.div`
   justify-content: center;
   margin-right: 17px;
 `;
-
 export const TrackTitleSvg = styled.svg`
   width: 18px;
   height: 17px;
@@ -95,7 +69,7 @@ export const TrackTitleSvg = styled.svg`
   stroke: #4e4e4e;
 `;
 
-export const TrackTitleLink = styled(Link)`
+export const TrackTitleLink = styled.a`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -110,7 +84,6 @@ export const TrackTitleSpan = styled.span`
   line-height: 24px;
   color: #4e4e4e;
 `;
-
 export const TrackAuthor = styled.div`
   width: 321px;
   display: -webkit-box;
@@ -121,7 +94,14 @@ export const TrackAuthor = styled.div`
   justify-content: flex-start;
 `;
 
-export const TrackAuthorLink = styled(Link)`
+export const Skeleton = styled.div`
+  width: 100%;
+  background-color: #313131;
+  min-width: 170px;
+  height: 20px;
+  animation: ${blink} 2s infinite;
+`;
+export const TrackAuthorLink = styled.a`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -131,10 +111,9 @@ export const TrackAuthorLink = styled(Link)`
 `;
 
 export const TrackAlbum = styled.div`
-  width: 245px;
+  width: 240px;
 `;
-
-export const TrackAlbumLink = styled(Link)`
+export const TrackAlbumLink = styled.a`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -148,6 +127,7 @@ export const TrackTimeSvg = styled.svg`
   margin-right: 17px;
   fill: transparent;
   stroke: #696969;
+  cursor: pointer;
 `;
 
 export const TrackTimeText = styled.span`
@@ -157,29 +137,4 @@ export const TrackTimeText = styled.span`
   line-height: 24px;
   text-align: right;
   color: #696969;
-`;
-
-const Pulse = () => css`
-  animation: pulse 0.6s ease-in-out infinite both;
-
-  @keyframes pulse {
-    0%,
-    to {
-      transform: scale(0.5);
-    }
-    50% {
-      transform: scale(1);
-    }
-  }
-`;
-
-export const PlayingTrack = styled.div`
-  position: relative;
-  text-align: center;
-  padding: 8px;
-  width: 16px;
-  height: 16px;
-  background-color: #b672ff;
-  border-radius: 50%;
-  ${(props) => (props.$playing ? Pulse : "")};
 `;

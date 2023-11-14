@@ -18,7 +18,7 @@ export function NotFound() {
           <S.NotFoundBlockItemTitle>
             Страница не найдена
           </S.NotFoundBlockItemTitle>
-          <img src="../img/icon/smile_crying.svg" alt="smile_crying" />
+          <img src="img/icon/crying.svg" alt="smile_crying" />
         </S.NotFoundBlockItem>
         <S.NotFoundBlockText>
           Возможно, она была удалена

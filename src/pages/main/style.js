@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   background-color: rgba(24, 24, 24, 1);
   overflow-y: scroll;
   overflow-x: hidden;
-  
+
   &::-webkit-scrollbar {
     width: 8px;
   }

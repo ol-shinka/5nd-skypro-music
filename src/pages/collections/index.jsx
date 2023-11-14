@@ -1,14 +1,19 @@
-import * as S from "../main/style";
+import { useGetMyPlaylistQuery } from "../../api/apiUserActions";
+import { useAuthSelector } from "../../auth";
+import Tracklist from "../../components/TrackList/TrackList";
 
-export function Collections() {
+export default function CollectionsPage() {
+  const auth = useAuthSelector();
+  const { data, error, isLoading } = useGetMyPlaylistQuery({ auth });
+
   return (
-    <S.Wrapper>
-      <S.Container>
-        <S.Main>
-          <h1>My Collections</h1>
-        </S.Main>
-        <footer className="footer" />
-      </S.Container>
-    </S.Wrapper>
+    <Tracklist
+      tracks={data}
+      error={error}
+      loading={isLoading}
+      showTracksLiked={true}
+      showSearchBar={false}
+      title="Мои треки"
+    />
   );
 }
