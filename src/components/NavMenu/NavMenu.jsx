@@ -1,34 +1,48 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import * as S from "./style";
-import { NavMenuItems } from "../NavMenuItems/NavMenuItems";
-import { UserContext } from "../Context"
+import { useLogout } from "../../auth";
+import { Link } from "react-router-dom";
 
-export function NavMenu() {
-  const [visible, setVisible] = useState(false);
-  const toggleVisibility = () => setVisible(!visible);
-  const { handleLogout } = useContext(UserContext);
+export default function NavMenu() {
+  const [open, setOpen] = useState(false);
+
+  const logout = useLogout();
+
   return (
     <S.MainNav>
-      <S.NavLogo>
-        <S.LogoImage src="img/logo.png" alt="logo" />
-      </S.NavLogo>
-      <S.NavBurger type="button" onClick={toggleVisibility}>
-        <S.BurgerLine />
-        <S.BurgerLine />
-        <S.BurgerLine />
+      <Link to="/">
+        <S.NavLogo>
+          <S.LogoImage src="/img/logo.png" alt="logo" />
+        </S.NavLogo>
+      </Link>
+      <S.NavBurger onClick={() => setOpen(!open)}>
+        <S.BurgerLine></S.BurgerLine>
+        <S.BurgerLine></S.BurgerLine>
+        <S.BurgerLine></S.BurgerLine>
       </S.NavBurger>
-      {visible && (
+
+      {open ? (
         <S.NavMenu>
           <S.MenuList>
-            <NavMenuItems item={{ link: "/", text: "Главное" }} />
-            <NavMenuItems item={{ link: "/Collections", text: "Мой плейлист" }} />
-            <NavMenuItems
-              item={{ link: "/auth", text: "Выйти" }}
-              handleLogout={handleLogout}
-            />
+            <S.MenuItem>
+              <S.MenuLink to="/">Главное</S.MenuLink>
+            </S.MenuItem>
+            <S.MenuItem>
+              <S.MenuLink to="/collections">Мои треки</S.MenuLink>
+            </S.MenuItem>
+            <S.MenuItem>
+              <S.MenuLink
+                onClick={(e) => {
+                  e.preventDefault();
+                  logout();
+                }}
+              >
+                Выйти
+              </S.MenuLink>
+            </S.MenuItem>
           </S.MenuList>
         </S.NavMenu>
-      )}
+      ) : null}
     </S.MainNav>
   );
 }

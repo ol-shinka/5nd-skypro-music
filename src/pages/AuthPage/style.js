@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 export const PageContainer = styled.div`
   max-width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.85);
 `;
 
 export const ModalForm = styled.div`
@@ -13,7 +12,6 @@ export const ModalForm = styled.div`
   position: absolute;
   left: calc(50% - (var(--modal-width) / 2));
   top: calc(50% - (var(--modal-height) / 2));
-  box-sizing: border-box;
   width: var(--modal-width);
   min-height: var(--modal-height);
   background-color: #ffffff;
@@ -52,7 +50,6 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
 
   width: 278px;
   height: 52px;
@@ -108,11 +105,10 @@ export const Inputs = styled.div`
   width: 100%;
 `;
 
-export const Error = styled.div`
+export const Error = styled.ul`
   color: coral;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
   margin-top: 20px;
-  text-align: left;
 `;
